@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css?family=PT+Sans');
+
+body {
+  background-color: #fdfdfd;
+  color: #333;
+  font-family: 'PT Sans', sans-serif;
+}
+
+a {
+  color: #333;
+  text-decoration: underline;
+}
+
+.recipe-photo {
+  width: 100%;
+}
