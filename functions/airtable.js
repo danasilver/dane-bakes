@@ -33,3 +33,12 @@ exports.getRecipe = function(id) {
     });
   }); 
 };
+
+exports.getBake = function(id) {
+  return new Promise((resolve, reject) => {
+    base('Bakes').find(id, (err, record) => {
+      if (err) return reject(err);
+      resolve(record.fields);
+    });
+  }); 
+}

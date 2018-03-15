@@ -1,10 +1,15 @@
 const airtable = require('./airtable');
+const cors = require('cors');
 const express = require('express');
 const functions = require('firebase-functions');
 
 const app = express();
 
-app.get('/api/recipes', (request, response) => {
+if (functions.config().environment === 'development') {
+  app.use(cors());
+}
+
+app.get('/recipes', (request, response) => {
   airtable.getAllRecipes({
       sort: [{field: 'Baked on', direction: 'desc'}],
     })
@@ -12,8 +17,14 @@ app.get('/api/recipes', (request, response) => {
     .catch(err => response.sendStatus(500));
 });
 
-app.get('/api/recipe/:id', (request, response) => {
-  airtable.getRecipe(request.param('id'))
+app.get('/recipe/:id', (request, response) => {
+  airtable.getRecipe(request.params.id)
+    .then(recipe => response.json(recipe))
+    .catch(err => response.sendStatus(500));
+});
+
+app.get('/bake/:id', (request, response) => {
+  airtable.getBake(request.params.id)
     .then(recipe => response.json(recipe))
     .catch(err => response.sendStatus(500));
 });
