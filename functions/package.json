@@ -9,12 +9,16 @@
     "logs": "firebase functions:log"
   },
   "dependencies": {
+    "@google-cloud/storage": "^1.6.0",
     "airtable": "^0.5.1",
     "cors": "^2.8.4",
     "express": "^4.16.2",
-    "firebase-admin": "~5.4.2",
+    "firebase-admin": "~5.5.0",
     "firebase-functions": "^0.7.1",
-    "moment": "^2.19.3"
+    "moment": "^2.19.3",
+    "request": "^2.85.0",
+    "request-promise": "^4.2.2",
+    "uuid": "^3.2.1"
   },
   "author": {
     "name": "Dana Silver",
